@@ -3,6 +3,7 @@ package com.kassirov.ExpressionParser.parsers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kassirov.ExpressionParser.EvaluatorRegistry;
 import com.kassirov.ExpressionParser.model.CloseBracket;
 import com.kassirov.ExpressionParser.model.CommandNode;
 import com.kassirov.ExpressionParser.model.Node;
@@ -63,7 +64,7 @@ public class ExpressionParser {
 				}
 				node.incValue(String.valueOf(c));
 				
-			} else if ( c == '*' || c == '+' ) {
+			} else if ( EvaluatorRegistry.getInstance().isContainCommand(String.valueOf(c)) ) {
 				nodes.add(node);
 				isNumber = false;
 				isCommand = false;

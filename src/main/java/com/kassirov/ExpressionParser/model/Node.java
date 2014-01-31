@@ -2,7 +2,6 @@ package com.kassirov.ExpressionParser.model;
 
 public class Node {
 	protected String value;
-	
 	public Node() {
 		this.value = "";
 	}
@@ -16,6 +15,9 @@ public class Node {
 	}
 	public void incValue(String value) {
 		this.value += value;
+	}
+	public String getType() {
+		return getClass().getSimpleName(); 
 	}
 	
 }
