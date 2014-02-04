@@ -18,7 +18,7 @@ public class ExpressionEvaluator {
 		for( int i = 0; i < nodes.size(); i++ ) {
 			if ( nodes.get(i).getType().equals(COMMAND_NODE) ) {
 				
-				
+				double a = ( nodes.get(i + 1).getType().equals(NUMBER_NODE) ) ? Double.parseDouble(nodes.get(i + 1).getValue()) : evaluate(nodes);
 				
 			}
 		}

@@ -1,0 +1,159 @@
+#fightTraxWidget {
+	color: gray;
+	width: 500px;
+	height: 600px;
+	background: url('background4.jpg') no-repeat black ;
+/* 	background-size:100% */
+
+}
+
+#fightTraxGameInfo {
+	width: 100%;
+	height: 5%;
+	text-align: center;
+}
+
+#fightTraxFightersNames {
+	width: 100%;
+	height: 5%;
+	text-align: center;
+}
+
+#fightTraxFighter1Name, #fightTraxFighter2Name {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	float:left;
+	color:white;
+	font-size: 18px;
+}
+
+
+#fightTraxGameStats {
+	clear: both;
+	width: 100%;
+	height: 90%;
+}
+
+#fightTraxGameStatsFighter1, #fightTraxGameStatsFighter2 {
+	position:relative;
+	width: 33%;
+	height: 100%;
+	float:left;
+}
+
+#fightTraxGameStatsReplay {
+	width: 34%;
+	height: 100%;
+	float:left;
+	background: rgba(255,255,255,0.9);
+}
+
+#fightTraxFighter1PhotoLeftStand {
+	margin-top: 10px;
+	float: left;
+	height: 95%;
+}
+
+#fightTraxFighter2PhotoRightStand {
+	margin-top: 10px;
+	float: right;
+	height: 95%;
+}
+
+#fightTraxFighter1PhotoLeftStand {
+	text-align: left;
+}
+
+#fightTraxFighter2PhotoRightStand {
+	text-align: right;
+}
+
+#fightTraxGameStatsTime {
+	width: 100%;
+	height: 22%;
+	text-align: center;
+}
+
+#fightTraxGameReplay {
+	width: 100%;
+	height: 78%;
+	overflow: hidden;
+	text-align: center;
+}
+
+
+
+.fightTraxStrikesSuccess {
+	color: green;
+	position: absolute;
+	vertical-align:middle;
+	text-align:center;
+	background: rgba(100,100,100,0.5);
+	color: green;
+}
+
+.fightTraxStrikesTotal {
+	color: blue;
+	position: absolute;
+	vertical-align:middle;
+	text-align:center;
+	background: rgba(255,255,255,0.5);
+}
+
+#FightTraxTSTH1 {
+	left: 15px;
+	top: 15px;
+}
+#FightTraxSSTH1 {
+	left: 30px;
+	top: 30px;
+}
+#FightTraxTSTB1 {
+	top: 170px;
+	left: 30px;
+}
+#FightTraxSSTB1 {
+	top: 185px;
+	left: 45px;
+}
+#FightTraxTSTL1 {
+	top: 430px;
+	left: 30px;
+}
+#FightTraxSSTL1 {
+	top: 445px;
+	left: 45px;
+}
+#FightTraxTSTH2 {
+	right: 15px;
+	top: 15px;
+}
+#FightTraxSSTH2 {
+	right: 30px;
+	top: 30px;
+}
+#FightTraxTSTB2 {
+	top: 170px;
+	right: 30px;
+}
+#FightTraxSSTB2 {
+	top: 185px;
+	right: 45px;;
+}
+#FightTraxTSTL2 {
+	top: 430px;
+	right: 30px;
+}
+#FightTraxSSTL2 {
+	top: 445px;
+	right: 45px;
+}
+
+
+
+
+
+
+
+
