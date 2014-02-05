@@ -49,6 +49,11 @@
 	background: rgba(255,255,255,0.9);
 }
 
+#fightTraxGameStatsTime {
+	width: 100%;
+	height: 30%;
+}
+
 #fightTraxFighter1PhotoLeftStand {
 	margin-top: 10px;
 	float: left;

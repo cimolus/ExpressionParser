@@ -121,10 +121,13 @@ FightTraxWidget.Template = (function() {
 					+'<img id="fightTraxFighter1PhotoLeftStand" src="{fighter1.photoUrlLeft}" />'
 				+'</div>'
 				+'<div id="fightTraxGameStatsReplay">'
-					+'<div id="fightTraxGameStatsTime">time</div>'
+					+'<div id="fightTraxGameStatsTime">'
+						+'<div id="fightTraxTimeRound">0</div>'
+						+'<div id="fightTraxTime">0</div>'
+					+'</div>'
 					+'<div id="fightTraxGameReplay">'
 						+'replay<br>'
-					+'	</div>'
+					+'</div>'
 				+'</div>'
 				+'<div id="fightTraxGameStatsFighter2">'
 					+'<div id="FightTraxTSTH2" class="fightTraxStrikesTotal" ></div>'
@@ -339,58 +342,78 @@ FightTraxWidget.Dictionary = (function() {
 }());
 
 
+
 FightTraxWidget.StrikesManager = ( function() {
 	
-	var TSTH1Selector = "#FightTraxTSTH1",
-		SSTH1Selector = "#FightTraxSSTH1",
-		TSTB1Selector = "#FightTraxTSTB1",
-		SSTB1Selector = "#FightTraxSSTB1",
-		TSTL1Selector = "#FightTraxTSTL1",
-		SSTL1Selector = "#FightTraxSSTL1",
-		TSTH2Selector = "#FightTraxTSTH2",
-		SSTH2Selector = "#FightTraxSSTH2",
-		TSTB2Selector = "#FightTraxTSTB2",
-		SSTB2Selector = "#FightTraxSSTB2",
-		TSTL2Selector = "#FightTraxTSTL2",
-		SSTL2Selector = "#FightTraxSSTL2";
+	var TSTH1Selector = null,
+		SSTH1Selector = null,
+		TSTB1Selector = null,
+		SSTB1Selector = null,
+		TSTL1Selector = null,
+		SSTL1Selector = null,
+		TSTH2Selector = null,
+		SSTH2Selector = null,
+		TSTB2Selector = null,
+		SSTB2Selector = null,
+		TSTL2Selector = null,
+		SSTL2Selector = null;
 		
+	var getCSS = function(value) {
+		var size = (value > 50 ) ? value / 2 + "px" : "50px";
+		return {
+			"width" : size,
+			"height": size,
+//			"border-radius": size
+		};
+	},
 	
+	getAnimate = function(value) {
+		return {
+			"border-radius": value/2 + "px",
+			
+		};
+	};
 	
+	var initSelectors = function() {
+		TSTH1Selector = $('#FightTraxTSTH1'),
+		SSTH1Selector = $('#FightTraxSSTH1'),
+		TSTB1Selector = $('#FightTraxTSTB1'),
+		SSTB1Selector = $('#FightTraxSSTB1'),
+		TSTL1Selector = $('#FightTraxTSTL1'),
+		SSTL1Selector = $('#FightTraxSSTL1'),
+		TSTH2Selector = $('#FightTraxTSTH2'),
+		SSTH2Selector = $('#FightTraxSSTH2'),
+		TSTB2Selector = $('#FightTraxTSTB2'),
+		SSTB2Selector = $('#FightTraxSSTB2'),
+		TSTL2Selector = $('#FightTraxTSTL2'),
+		SSTL2Selector = $('#FightTraxSSTL2');
+	};
 	
 	return {
 		renderStrikes: function(action) {
 			
-			console.log(action);
+			if ( !SSTL2Selector )
+				initSelectors();
 			
-			$(TSTH1Selector).text(action.Stats.fighter1.TSTH);
-			var px =  action.Stats.fighter1.TSTH / 2 + "px";
-			$(TSTH1Selector).css({
-				"width": px,
-				"height": px,
-				"border-radius": px
-			});
+			TSTH1Selector.text(action.Stats.fighter1.TSTH).animate(getCSS(action.Stats.fighter1.TSTH), 10);
+			SSTH1Selector.text(action.Stats.fighter1.SSTH).animate(getCSS(action.Stats.fighter1.SSTH), 10);
 			
-			$(SSTH1Selector).text(action.Stats.fighter1.SSTH);
+			TSTB1Selector.text(action.Stats.fighter1.TSTB).animate(getCSS(action.Stats.fighter1.TSTB), 10);
+			SSTB1Selector.text(action.Stats.fighter1.SSTB).animate(getCSS(action.Stats.fighter1.SSTB), 10);
 			
-			var px =  action.Stats.fighter1.SSTH / 2 + "px";
-			$(SSTH1Selector).css({
-				"width": px,
-				"height": px,
-				"border-radius": px
-			});
+			TSTL1Selector.text(action.Stats.fighter1.TSTL).animate(getCSS(action.Stats.fighter1.TSTL), 10);
+			SSTL1Selector.text(action.Stats.fighter1.SSTL).animate(getCSS(action.Stats.fighter1.SSTL), 10);
 			
-			$(TSTB1Selector).text(action.Stats.fighter1.TSTB);
-			$(SSTB1Selector).text(action.Stats.fighter1.SSTB);
-			$(TSTL1Selector).text(action.Stats.fighter1.TSTL);
-			$(SSTL1Selector).text(action.Stats.fighter1.SSTL);
+			TSTH2Selector.text(action.Stats.fighter2.TSTH).animate(getCSS(action.Stats.fighter2.TSTH), 10);
+			SSTH2Selector.text(action.Stats.fighter2.SSTH).animate(getCSS(action.Stats.fighter2.SSTH), 10);
 			
-			$(TSTH2Selector).text(action.Stats.fighter2.TSTH);
-			$(SSTH2Selector).text(action.Stats.fighter2.SSTH);
-			$(TSTB2Selector).text(action.Stats.fighter2.TSTB);
-			$(SSTB2Selector).text(action.Stats.fighter2.SSTB);
-			$(TSTL2Selector).text(action.Stats.fighter2.TSTL);
-			$(SSTL2Selector).text(action.Stats.fighter2.SSTL);
+			TSTB2Selector.text(action.Stats.fighter2.TSTB).animate(getCSS(action.Stats.fighter2.TSTB), 10);
+			SSTB2Selector.text(action.Stats.fighter2.SSTB).animate(getCSS(action.Stats.fighter2.SSTB), 10);
 			
+			TSTL2Selector.text(action.Stats.fighter2.TSTL).animate(getCSS(action.Stats.fighter2.TSTL), 10);
+			SSTL2Selector.text(action.Stats.fighter2.SSTL).animate(getCSS(action.Stats.fighter2.SSTL), 10);
+			
+			console.log("Strike rendered");
 		}
 	};
 	
@@ -518,6 +541,11 @@ FightTraxWidget.ActionManager = (function() {
 	
 	renderStop = function(action) {
 		assignStats(action);
+	},
+	
+	renderTime = function(action) {
+		$("#fightTraxTimeRound").text(action.Rd);
+		$("#fightTraxTime").text(action.Time);
 	};
 	
 	return {
@@ -533,6 +561,7 @@ FightTraxWidget.ActionManager = (function() {
 			if ( ! actions[action.Rd] ) actions[action.Rd] = [];
 			if ( ! actions[action.Rd][action.Time] ) actions[action.Rd][action.Time] = [];			
 			var i = actions[action.Rd][action.Time].length;
+			renderTime(action);
 			switch(action.Type) {
 			case "STR":
 				renderStrike(action);
@@ -559,6 +588,7 @@ FightTraxWidget.ActionManager = (function() {
 				renderStop(action);
 				break;
 			}
+			$("#fightTraxGameInfo").text(action["Message"]);
 			actions[action.Rd][action.Time][i] = action;
 //			console.log(prevAction, action);
 			prevAction = action;
@@ -677,10 +707,15 @@ FightTraxWidget.Loader = ( function() {
 		};
 		
 		$(config.getConfig().widgetSelector).html(templates.getWidget(data));
-		
+//		FightTraxWidget.SelectorsManager.init();
 		setTimeout(initActions, 1000 );
 		
 	},
+	
+	sleep = function(ms) {
+		ms += new Date().getTime();
+		while (new Date() < ms){}
+	}, 
 	
 	initActions = function() {
 		FightTraxWidget.ActionManager.clear();
@@ -689,6 +724,7 @@ FightTraxWidget.Loader = ( function() {
 				for( var j = 0; j < replayBundle.data.PP[i].GE.length; j++ ) {
 					for ( var k = 0; k < replayBundle.data.PP[i].GE[j].Action.length; k++ ) {
 						actionsManager.renderAction(replayBundle.data.PP[i].GE[j].Action[k]);
+//						sleep(100);
 					}
 				}
 			}
@@ -703,9 +739,12 @@ FightTraxWidget.Loader = ( function() {
 			fightersMap[fightEvent[i].fighter2.nativeId] = fightEvent[i].fighter2;
 		}
 		console.log(fightersMap);
-	};
+	},
+	
+	bool = true;
 	
 	return {
+		bool: bool,
 		
 		getFightEvent: function() {
 			return fightEvent;
@@ -752,3 +791,7 @@ FightTraxWidget.Initializator = (function() {
 	
 }());
 
+
+//$("#fightTraxWidget").ready(function() {
+//	FightTraxWidget.SelectorsManager.init();
+//});
